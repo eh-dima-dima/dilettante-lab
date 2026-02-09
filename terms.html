@@ -1,38 +1,296 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Terms of Service for dilettante46</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Dilettante-lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #16161f;
+            --border: #2a2a3a;
+            --border-accent: #3a3a5a;
+            --text-primary: #e8e8f0;
+            --text-secondary: #9898b0;
+            --text-muted: #6a6a82;
+            --accent: #00d4aa;
+            --accent-dim: rgba(0, 212, 170, 0.12);
+            --tiktok-pink: #fe2c55;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === NAV === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* === LEGAL CONTENT === */
+        .legal-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+        .legal-hero .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .legal-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .legal-hero .updated {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
+
+        .legal-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .legal-content h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 1.5rem;
+        }
+
+        .legal-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .legal-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .legal-content a:hover { text-decoration: underline; }
+
+        .highlight-box {
+            background: var(--accent-dim);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box p {
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: rgba(254, 44, 85, 0.08);
+            border: 1px solid rgba(254, 44, 85, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .warning-box p {
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        /* === FOOTER === */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            background: var(--bg-primary);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .footer-left .logo { font-size: 1rem; }
+        .footer-left p { font-size: 0.8rem; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-contact { font-size: 0.85rem; color: var(--text-muted); }
+        .footer-contact a { color: var(--accent); text-decoration: none; }
+        .footer-contact a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .legal-hero { padding: 3rem 1.5rem 1.5rem; }
+            .legal-content { padding: 1.5rem 1.5rem 4rem; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Terms of Service for dilettante46</h1>
 
-  <p><strong>1. Acceptance of Terms</strong></p>
-  <p>
-    By connecting your TikTok account to dilettante46, you agree to these Terms of Service
-    and the TikTok Terms of Service.
-  </p>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Dilettante<span>-lab</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+    </div>
+</nav>
 
-  <p><strong>2. Purpose</strong></p>
-  <p>
-    This application (based on Postiz) is designed for content management and scheduling.
-  </p>
+<!-- HEADER -->
+<div class="legal-hero">
+    <div class="section-label">Legal</div>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: February 9, 2026</p>
+</div>
 
-  <p><strong>3. Prohibited Use</strong></p>
-  <p>
-    You agree not to use this application for any illegal activities, spamming,
-    or violating TikTok's Community Guidelines.
-  </p>
+<!-- CONTENT -->
+<div class="legal-content">
 
-  <p><strong>4. Limitation of Liability</strong></p>
-  <p>
-    We are not responsible for any account suspension or content removal by TikTok
-    resulting from your use of the application.
-  </p>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using Dilettante-lab ("the Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you must not use the Service.</p>
+    <p>By using Dilettante-lab in conjunction with your TikTok account, you also agree to comply with <strong>TikTok's Terms of Service</strong> and <strong>TikTok's Community Guidelines</strong> at all times. Violation of TikTok's policies through our platform constitutes a violation of these Terms.</p>
 
-  <p><strong>5. Contact</strong></p>
-  <p>
-    For any questions, contact: <a href="mailto:dmitry20042000@gmail.com">dmitry20042000@gmail.com</a>
-  </p>
+    <h2>2. Description of Service</h2>
+    <p>Dilettante-lab is a content scheduling and analytics tool that integrates with TikTok's official Content Posting API. The Service enables users to schedule video posts, upload content to TikTok Drafts, and view performance analytics for their TikTok accounts.</p>
+    <div class="highlight-box">
+        <p><strong>Our services operate strictly within the boundaries of the TikTok Content Posting API.</strong> We do not bypass, circumvent, or violate any platform restrictions, rate limits, or access controls imposed by TikTok.</p>
+    </div>
+
+    <h2>3. User Accounts &amp; Responsibilities</h2>
+    <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to provide accurate and current information when connecting your TikTok account.</p>
+    <p>You are solely responsible for all content that you upload, schedule, or publish through Dilettante-lab. The Service acts as a tool to facilitate your publishing workflow — it does not moderate, approve, or endorse any user content.</p>
+
+    <h2>4. Prohibited Use</h2>
+    <div class="warning-box">
+        <p><strong>The following activities are strictly prohibited</strong> and will result in immediate account termination without prior notice.</p>
+    </div>
+    <p>You must not use Dilettante-lab to: engage in spam, including mass-posting repetitive or low-quality content designed to manipulate TikTok's algorithm; upload, schedule, or distribute content that is illegal, harmful, threatening, abusive, harassing, defamatory, or otherwise objectionable; upload content that violates TikTok's Community Guidelines, including but not limited to content containing hate speech, violence, nudity, or dangerous activities; attempt to gain unauthorized access to other users' accounts, TikTok accounts, or Dilettante-lab systems; use the Service for any commercial purpose that violates TikTok's developer policies; reverse-engineer, decompile, or attempt to extract the source code of the Service.</p>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All content, features, and functionality of Dilettante-lab (excluding user-generated content) are owned by Dilettante-lab and are protected by applicable intellectual property laws. You retain full ownership of the content you upload and publish through the Service.</p>
+
+    <h2>6. Disclaimer &amp; Independence</h2>
+    <p><strong>Dilettante-lab is an independent tool and is not officially affiliated with, endorsed by, or sponsored by TikTok Inc. or ByteDance Ltd.</strong> "TikTok" is a registered trademark of its respective owners. Our use of TikTok's API is governed by TikTok's Developer Terms of Service.</p>
+    <p>The Service is provided on an "as is" and "as available" basis, without warranties of any kind, either express or implied. We do not guarantee that TikTok's API will remain available, that posts will be published at the exact scheduled time, or that the Service will be uninterrupted or error-free.</p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, Dilettante-lab shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill, arising from your use of or inability to use the Service. This includes situations where TikTok modifies, restricts, or revokes API access.</p>
+
+    <h2>8. Account Termination</h2>
+    <p>We reserve the right to suspend or terminate your account at any time, with or without cause, if we determine that you have violated these Terms, TikTok's policies, or applicable law. You may also terminate your account at any time by contacting us at <a href="mailto:dmytro.yachichko@gmail.com">dmytro.yachichko@gmail.com</a>. Upon termination, all associated data will be deleted in accordance with our <a href="privacy.html">Privacy Policy</a>.</p>
+
+    <h2>9. API Compliance</h2>
+    <div class="highlight-box">
+        <p><strong>Dilettante-lab operates strictly within the boundaries of TikTok's Content Posting API.</strong> We do not bypass any platform restrictions, rate limits, or access controls. All video publishing and data access actions are performed exclusively through TikTok's officially documented API endpoints.</p>
+    </div>
+    <p>We regularly review our practices to ensure ongoing compliance with TikTok's Developer Terms of Service and any updates to their API policies.</p>
+
+    <h2>10. Changes to These Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. Material changes will be communicated by posting the updated Terms on this page and updating the "Last updated" date. Your continued use of the Service following any changes constitutes acceptance of the updated Terms.</p>
+
+    <h2>11. Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the applicable jurisdiction. Any disputes arising under these Terms shall be resolved through binding arbitration or in the courts of competent jurisdiction.</p>
+
+    <h2>12. Contact</h2>
+    <p>For any questions regarding these Terms of Service, please contact us at: <a href="mailto:dmytro.yachichko@gmail.com">dmytro.yachichko@gmail.com</a></p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <a href="index.html" class="logo">Dilettante<span>-lab</span></a>
+            <p>&copy; 2026 Dilettante-lab. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <div class="footer-contact">
+            Support: <a href="mailto:dmytro.yachichko@gmail.com">dmytro.yachichko@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
