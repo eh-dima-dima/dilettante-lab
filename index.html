@@ -1,34 +1,580 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SiteApprove</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilettante-lab — Schedule Your TikTok Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #16161f;
+            --bg-card-hover: #1c1c28;
+            --border: #2a2a3a;
+            --border-accent: #3a3a5a;
+            --text-primary: #e8e8f0;
+            --text-secondary: #9898b0;
+            --text-muted: #6a6a82;
+            --accent: #00d4aa;
+            --accent-dim: rgba(0, 212, 170, 0.12);
+            --accent-glow: rgba(0, 212, 170, 0.25);
+            --tiktok-pink: #fe2c55;
+            --tiktok-cyan: #25f4ee;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === NAV === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* === HERO === */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 100px;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--tiktok-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === SECTIONS === */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* === CORE FUNCTIONALITY === */
+        .feature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .feature-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-visual::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        .mock-ui {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mock-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .mock-thumb {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--tiktok-pink), var(--tiktok-cyan));
+            flex-shrink: 0;
+        }
+        .mock-text { flex: 1; }
+        .mock-text .title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .mock-text .sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .mock-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .mock-badge.scheduled { background: var(--accent-dim); color: var(--accent); }
+        .mock-badge.draft { background: rgba(254, 44, 85, 0.12); color: var(--tiktok-pink); }
+        .mock-badge.posted { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+
+        .feature-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .feature-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+        .feature-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* === DATA TRANSPARENCY === */
+        .data-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin: 0;
+            max-width: none;
+            padding: 5rem 2rem;
+        }
+        .data-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .data-section .section-subtitle {
+            max-width: 700px;
+        }
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.25rem;
+        }
+        .scope-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+        .scope-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+        .scope-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .scope-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .scope-icon.identity { background: rgba(0, 212, 170, 0.12); }
+        .scope-icon.publish { background: rgba(254, 44, 85, 0.12); }
+        .scope-icon.upload { background: rgba(37, 244, 238, 0.12); }
+        .scope-icon.profile { background: rgba(168, 130, 255, 0.12); }
+        .scope-icon.stats { background: rgba(255, 190, 60, 0.12); }
+
+        .scope-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: var(--accent);
+            background: var(--accent-dim);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+        .scope-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .scope-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* === FOOTER === */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            background: var(--bg-primary);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .footer-left .logo {
+            font-size: 1rem;
+        }
+        .footer-left p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-contact {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-contact a:hover { text-decoration: underline; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .feature-block {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero { padding: 4rem 1.5rem 3rem; }
+            section { padding: 3rem 1.5rem; }
+            .data-section { padding: 3rem 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <h1>SiteApprove</h1>
-  <p>Official site for TikTok Developers verification.</p>
-<p>My App is a web service that allows users to authenticate and manage their data.</p>
 
-<h2>How it works</h2>
-<p>Users sign in using OAuth to access their profile information.</p>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Dilettante<span>-lab</span></a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#data-usage">Data Usage</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+    </div>
+</nav>
 
-<h2>Privacy Policy</h2>
-<p>
-We collect basic profile information (such as email and username) only to provide the service.
-We do not sell or share user data with third parties.
-For data deletion requests, contact: dmytro.yachichko@gmail.com
-</p>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">TikTok Content Posting API</div>
+    <h1>Schedule Your TikTok Growth with <em>Dilettante-lab</em></h1>
+    <p>The all-in-one platform for automated posting, drafts management, and deep analytics — built on TikTok's official API.</p>
+</section>
 
-<h2>Terms of Service</h2>
-<p>
-By using this service, you agree to use it as intended and comply with applicable laws.
-</p>
+<!-- CORE FUNCTIONALITY -->
+<section id="features">
+    <div class="section-label">Core Functionality</div>
+    <div class="feature-block">
+        <div class="feature-text">
+            <h3>Effortless Post Scheduling</h3>
+            <p>Upload your videos, pick the perfect time, and let Dilettante-lab handle the rest. Our platform uses TikTok's official Content Posting API to publish your content automatically — no manual posting required.</p>
+            <ul class="feature-list">
+                <li>Upload videos and schedule them for any date and time</li>
+                <li>Automatic publication via TikTok's Content Posting API</li>
+                <li>Send videos to TikTok Drafts for native editing before going live</li>
+                <li>Track your posting history and upcoming schedule in one dashboard</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <div class="mock-ui">
+                <div class="mock-row">
+                    <div class="mock-thumb"></div>
+                    <div class="mock-text">
+                        <div class="title">Summer Collection Teaser</div>
+                        <div class="sub">Today at 6:00 PM</div>
+                    </div>
+                    <span class="mock-badge scheduled">Scheduled</span>
+                </div>
+                <div class="mock-row">
+                    <div class="mock-thumb" style="background: linear-gradient(135deg, #a882ff, #25f4ee);"></div>
+                    <div class="mock-text">
+                        <div class="title">Behind the Scenes #4</div>
+                        <div class="sub">Tomorrow at 12:30 PM</div>
+                    </div>
+                    <span class="mock-badge scheduled">Scheduled</span>
+                </div>
+                <div class="mock-row">
+                    <div class="mock-thumb" style="background: linear-gradient(135deg, #ffbe3c, #fe2c55);"></div>
+                    <div class="mock-text">
+                        <div class="title">Product Review Edit</div>
+                        <div class="sub">Awaiting final edit</div>
+                    </div>
+                    <span class="mock-badge draft">Draft</span>
+                </div>
+                <div class="mock-row">
+                    <div class="mock-thumb" style="background: linear-gradient(135deg, #555, #888);"></div>
+                    <div class="mock-text">
+                        <div class="title">Weekly Recap #12</div>
+                        <div class="sub">Feb 7, 2026 · 3:00 PM</div>
+                    </div>
+                    <span class="mock-badge posted">Posted ✓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Contact</h2>
-<p>Email: dmytro.yachichko@gmail.com</p>
-  <footer>
-    <a href="terms.html">Terms of Service</a> |
-    <a href="privacy.html">Privacy Policy</a>
-  </footer>
+<!-- DATA TRANSPARENCY -->
+<div class="data-section" id="data-usage">
+    <div class="data-inner">
+        <div class="section-label">Transparency</div>
+        <div class="section-title">How We Use Your TikTok Data</div>
+        <p class="section-subtitle">Dilettante-lab only accesses the TikTok data required to provide you with scheduling, publishing, and analytics features. Below is a detailed explanation of every API scope we request and why.</p>
+
+        <div class="scope-grid">
+            <!-- user.info.basic -->
+            <div class="scope-card">
+                <div class="scope-header">
+                    <div class="scope-icon identity">👤</div>
+                    <span class="scope-name">user.info.basic</span>
+                </div>
+                <h4>Account Identification</h4>
+                <p>Used to create your Dilettante-lab account and display your TikTok avatar and username in the dashboard. This allows you to confirm your identity and manage your connected profile.</p>
+            </div>
+
+            <!-- video.publish -->
+            <div class="scope-card">
+                <div class="scope-header">
+                    <div class="scope-icon publish">🚀</div>
+                    <span class="scope-name">video.publish</span>
+                </div>
+                <h4>Automated Video Publishing</h4>
+                <p>Used to automatically post your scheduled videos from our server to your TikTok profile at the designated time. This is the core mechanism behind our scheduling feature.</p>
+            </div>
+
+            <!-- video.upload -->
+            <div class="scope-card">
+                <div class="scope-header">
+                    <div class="scope-icon upload">📤</div>
+                    <span class="scope-name">video.upload</span>
+                </div>
+                <h4>Draft Uploads</h4>
+                <p>Used to upload videos to your TikTok "Drafts" folder, allowing you to add final native touches — such as sounds, stickers, or effects — before publishing the content on your own terms.</p>
+            </div>
+
+            <!-- user.info.profile -->
+            <div class="scope-card">
+                <div class="scope-header">
+                    <div class="scope-icon profile" style="color: #a882ff;">📋</div>
+                    <span class="scope-name">user.info.profile</span>
+                </div>
+                <h4>Profile Verification</h4>
+                <p>Used to display your bio and profile link within our dashboard, ensuring you are managing the correct TikTok account. This data is displayed to you only and is not shared.</p>
+            </div>
+
+            <!-- user.info.stats -->
+            <div class="scope-card">
+                <div class="scope-header">
+                    <div class="scope-icon stats" style="color: #ffbe3c;">📊</div>
+                    <span class="scope-name">user.info.stats</span>
+                </div>
+                <h4>Performance Analytics</h4>
+                <p>Used to provide you with performance insights — including likes, followers, and video views — directly in our analytics dashboard. This helps you track growth and optimize your posting schedule.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <a href="index.html" class="logo">Dilettante<span>-lab</span></a>
+            <p>&copy; 2026 Dilettante-lab. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <div class="footer-contact">
+            Support: <a href="mailto:dmytro.yachichko@gmail.com">dmytro.yachichko@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
